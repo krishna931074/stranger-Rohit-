@@ -181,6 +181,17 @@ async def download_video(url,cmd, name):
     except FileNotFoundError as exc:
         return os.path.isfile.splitext[0] + "." + "mp4"
 
+   #-----------------------Emoji handler------------------------------------
+
+EMOJIS = ["🦁", "🐶", "🐼", "🐱", "👻", "🐻‍❄️", "☁️", "🚹", "🚺", "🐠", "🦋","🖕",]
+emoji_counter = 0  # Initialize a global counter
+
+def get_next_emoji():
+    global emoji_counter
+    emoji = EMOJIS[emoji_counter]
+    emoji_counter = (emoji_counter + 1) % len(EMOJIS)
+    return emoji
+
 
 async def send_doc(bot: Client, m: Message,cc,ka,cc1,prog,count,name):
     reply = await m.reply_text(f"Uploading » `{name}`")
